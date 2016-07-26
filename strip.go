@@ -20,7 +20,7 @@ var (
 	setextHeaderReg = regexp.MustCompile(`^[=\-]{2,}\s*$`)
 	footnotesReg    = regexp.MustCompile(`\[\^.+?\](\: .*?$)?`)
 	footnotes2Reg   = regexp.MustCompile(`\s{0,2}\[.*?\]: .*?$`)
-	imagesReg       = regexp.MustCompile(`\!\[.*?\][\[\(].*?[\]\)]`)
+	imagesReg       = regexp.MustCompile(`\!\[.*?\]\s?[\[\(].*?[\]\)]`)
 	linksReg        = regexp.MustCompile(`\[(.*?)\][\[\(].*?[\]\)]`)
 	blockquoteReg   = regexp.MustCompile(`>\s*`)
 	refLinkReg      = regexp.MustCompile(`^\s{1,2}\[(.*?)\]: (\S+)( ".*?")?\s*$`)
