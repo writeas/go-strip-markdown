@@ -6,7 +6,7 @@ func TestStripMarkdown(t *testing.T) {
 	// Same tests as github.com/stiang/remove-markdown
 	in := `## This is a heading ##
 
-This is an _emphasized paragraph_ with [a link](http://www.disney.com/).
+This is an _emphasized paragraph_ with [a link](http://www.disney.com/). Here's an _[emphasized link](https://write.as)_.
 
 ### This is another heading
 
@@ -18,7 +18,7 @@ In ` + "`Getting Started` we **set up** `something`" + ` __foo__.
 
 	out := `This is a heading 
 
-This is an emphasized paragraph with a link.
+This is an emphasized paragraph with a link. Here's an emphasized link.
 
 This is another heading
 
