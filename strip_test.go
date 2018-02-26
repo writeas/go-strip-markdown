@@ -92,8 +92,20 @@ You can even share code stuff.`
 		t.Errorf("Original:\n\n%s\n\nGot:\n\n%s", in, res)
 	}
 
-	in = "![Some image] (https://write.as/favicon.ico)"
+	in = "![] (https://write.as/favicon.ico)"
 	out = ""
+	if res := Strip(in); res != out {
+		t.Errorf("Original:\n\n%s\n\nGot:\n\n%s", in, res)
+	}
+
+	in = "![Some image] (https://write.as/favicon.ico)"
+	out = "Some image"
+	if res := Strip(in); res != out {
+		t.Errorf("Original:\n\n%s\n\nGot:\n\n%s", in, res)
+	}
+
+	in = "![Some image](https://write.as/favicon.ico)"
+	out = "Some image"
 	if res := Strip(in); res != out {
 		t.Errorf("Original:\n\n%s\n\nGot:\n\n%s", in, res)
 	}
