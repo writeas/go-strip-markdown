@@ -1,4 +1,4 @@
-// stripmd strips Markdown from text
+// Package stripmd strips Markdown from text
 package stripmd
 
 import (
