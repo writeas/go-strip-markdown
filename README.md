@@ -1,4 +1,7 @@
 # go-strip-markdown
+
+[![GoDoc](https://godoc.org/github.com/writeas/go-strip-markdown?status.svg)](https://godoc.org/github.com/writeas/go-strip-markdown)
+
 A Markdown stripper written in Go (golang).
 
 ## Usage
