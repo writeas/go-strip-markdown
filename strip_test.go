@@ -33,7 +33,6 @@ With items
 	}
 
 	// More extensive tests
-	// FIXME: "matching" header hashes cause extra spaces in front of headers.
 	in = `# Markdown is simple
 It lets you _italicize words_ and **bold them**, too. You can ~~cross things out~~ and add __emphasis__ to your writing.
 

@@ -24,7 +24,7 @@ var (
 	linksReg        = regexp.MustCompile(`\[(.*?)\][\[\(].*?[\]\)]`)
 	blockquoteReg   = regexp.MustCompile(`>\s*`)
 	refLinkReg      = regexp.MustCompile(`^\s{1,2}\[(.*?)\]: (\S+)( ".*?")?\s*$`)
-	atxHeaderReg    = regexp.MustCompile(`(?m)^\#{1,6}\s*([^#]+)\s*(\#{1,6})?`)
+	atxHeaderReg    = regexp.MustCompile(`(?m)^\#{1,6}\s*([^#]+)\s*(\#{1,6})?$`)
 	atxHeaderReg2   = regexp.MustCompile(`([\*_]{1,3})(\S.*?\S)?P1`)
 	atxHeaderReg3   = regexp.MustCompile("(?m)(`{3,})" + `(.*?)?P1`)
 	atxHeaderReg4   = regexp.MustCompile(`^-{3,}\s*$`)
