@@ -33,6 +33,9 @@ var (
 )
 
 // Strip returns the given string sans any Markdown.
+// Where necessary, elements are replaced with their best textual forms, so
+// for example, hyperlinks are stripped of their URL and become only the link
+// text, and images lose their URL and become only the alt text.
 func Strip(s string) string {
 	res := s
 	res = listLeadersReg.ReplaceAllString(res, "$1")
