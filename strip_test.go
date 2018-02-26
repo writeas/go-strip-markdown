@@ -1,6 +1,9 @@
 package stripmd
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestStripMarkdown(t *testing.T) {
 	// Same tests as github.com/stiang/remove-markdown
@@ -108,4 +111,15 @@ You can even share code stuff.`
 	if res := Strip(in); res != out {
 		t.Errorf("Original:\n\n%s\n\nGot:\n\n%s", in, res)
 	}
+}
+
+func ExampleStrip() {
+	fmt.Println(Strip(`# Hello, world!
+
+This is [a Go library](https://github.com/writeas/go-strip-markdown) for stripping **Markdown** from _any_ text.`))
+
+	// Output:
+	// Hello, world!
+	//
+	// This is a Go library for stripping Markdown from any text.
 }
