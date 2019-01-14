@@ -41,5 +41,11 @@ And they wanted **none of it**."
 ## Inspiration
 This was largely based off of [remove-markdown](https://github.com/stiang/remove-markdown), a Markdown stripper written in Javascript.
 
+## Used by
+
+This library is used in these projects:
+
+* [WriteFreely](https://github.com/writeas/writefreely)
+
 ## License
 MIT.
