@@ -1,8 +1,10 @@
 package main
 
-import stripmd "github.com/writeas/go-strip-markdown"
-import "fmt"
-import "os"
+import (
+	"fmt"
+	"github.com/writeas/go-strip-markdown"
+	"os"
+)
 
 func main() {
 	if len(os.Args) < 2 {
