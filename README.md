@@ -12,7 +12,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/writeas/go-strip-markdown"
+	stripmd "github.com/writeas/go-strip-markdown"
 	"os"
 )
 
