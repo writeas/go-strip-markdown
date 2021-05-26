@@ -37,6 +37,10 @@ var (
 // for example, hyperlinks are stripped of their URL and become only the link
 // text, and images lose their URL and become only the alt text.
 func Strip(s string) string {
+	return StripOptions(s, Options{})
+}
+
+func StripOptions(s string, opts Options) string {
 	res := s
 	res = listLeadersReg.ReplaceAllString(res, "$1")
 
@@ -52,7 +56,11 @@ func Strip(s string) string {
 	res = setextHeaderReg.ReplaceAllString(res, "")
 	res = footnotesReg.ReplaceAllString(res, "")
 	res = footnotes2Reg.ReplaceAllString(res, "")
-	res = imagesReg.ReplaceAllString(res, "$1")
+	if opts.SkipImages {
+		res = imagesReg.ReplaceAllString(res, "")
+	} else {
+		res = imagesReg.ReplaceAllString(res, "$1")
+	}
 	res = linksReg.ReplaceAllString(res, "$1")
 	res = blockquoteReg.ReplaceAllString(res, "  ")
 	res = refLinkReg.ReplaceAllString(res, "")
