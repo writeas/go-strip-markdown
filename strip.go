@@ -50,8 +50,10 @@ func StripOptions(s string, opts Options) string {
 
 	res = emphReg.ReplaceAllString(res, "$1")
 	res = emphReg2.ReplaceAllString(res, "$1")
-	res = emphReg3.ReplaceAllString(res, "$1")
-	res = emphReg4.ReplaceAllString(res, "$1")
+	if !opts.SkipUnderscores {
+		res = emphReg3.ReplaceAllString(res, "$1")
+		res = emphReg4.ReplaceAllString(res, "$1")
+	}
 	res = htmlReg.ReplaceAllString(res, "$1")
 	res = setextHeaderReg.ReplaceAllString(res, "")
 	res = footnotesReg.ReplaceAllString(res, "")
