@@ -111,6 +111,33 @@ You can even share code stuff.`
 	if res := Strip(in); res != out {
 		t.Errorf("Original:\n\n%s\n\nGot:\n\n%s", in, res)
 	}
+	// Test to skip images
+	in = "![Some image](https://write.as/favicon.ico)"
+	out = ""
+	if res := StripOptions(in, Options{SkipImages: true}); res != out {
+		t.Errorf("Original:\n\n%s\n\nGot:\n\n%s", in, res)
+	}
+
+	// Test for skipping single underscores
+	in = "_this is single emphasis_"
+	out = "_this is single emphasis_"
+	if res := StripOptions(in, Options{SkipUnderscores: true}); res != out {
+		t.Errorf("Original:\n\n%s\n\nGot:\n\n%s", in, res)
+	}
+	if res := Strip(in); res == out {
+		t.Errorf("Original:\n\n%s\n\nGot:\n\n%s", in, res)
+	}
+
+	// Test for skipping double underscores
+	in = "__this is double emphasis__"
+	out = "__this is double emphasis__"
+	if res := StripOptions(in, Options{SkipUnderscores: true}); res != out {
+		t.Errorf("Original:\n\n%s\n\nGot:\n\n%s", in, res)
+	}
+	if res := Strip(in); res == out {
+		t.Errorf("Original:\n\n%s\n\nGot:\n\n%s", in, res)
+	}
+
 }
 
 func ExampleStrip() {
