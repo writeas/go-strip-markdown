@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/writeas/go-strip-markdown"
 	"os"
+
+	stripmd "github.com/writeas/go-strip-markdown/v2"
 )
 
 func main() {

@@ -123,3 +123,25 @@ This is [a Go library](https://github.com/writeas/go-strip-markdown) for strippi
 	//
 	// This is a Go library for stripping Markdown from any text.
 }
+
+func TestURLKeep(t *testing.T) {
+	testData := []struct {
+		md     string
+		output string
+	}{
+		{
+			"New **Result**!! [Link](https://examle.com/favicon.ico)",
+			"New Result!! Link: https://examle.com/favicon.ico",
+		},
+		{
+			"[Some image](https://examle.com/favicon.ico)",
+			"Some image: https://examle.com/favicon.ico",
+		},
+	}
+
+	for i, td := range testData {
+		if res := StripOptions(td.md, Options{KeepURL: true}); res != td.output {
+			t.Errorf("Test %d: Original:\n\n%s\n\nGot:\n\n%s", i, td.md, res)
+		}
+	}
+}

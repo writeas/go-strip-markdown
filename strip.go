@@ -22,6 +22,7 @@ var (
 	footnotes2Reg   = regexp.MustCompile(`\s{0,2}\[.*?\]: .*?$`)
 	imagesReg       = regexp.MustCompile(`\!\[(.*?)\]\s?[\[\(].*?[\]\)]`)
 	linksReg        = regexp.MustCompile(`\[(.*?)\][\[\(].*?[\]\)]`)
+	linksReg2       = regexp.MustCompile(`\[(.*?)]\((.*?)\)`)
 	blockquoteReg   = regexp.MustCompile(`>\s*`)
 	refLinkReg      = regexp.MustCompile(`^\s{1,2}\[(.*?)\]: (\S+)( ".*?")?\s*$`)
 	atxHeaderReg    = regexp.MustCompile(`(?m)^\#{1,6}\s*([^#]+)\s*(\#{1,6})?$`)
@@ -61,7 +62,11 @@ func StripOptions(s string, opts Options) string {
 	} else {
 		res = imagesReg.ReplaceAllString(res, "$1")
 	}
-	res = linksReg.ReplaceAllString(res, "$1")
+	if opts.KeepURL {
+		res = linksReg2.ReplaceAllString(res, "$1: $2")
+	} else {
+		res = linksReg.ReplaceAllString(res, "$1")
+	}
 	res = blockquoteReg.ReplaceAllString(res, "  ")
 	res = refLinkReg.ReplaceAllString(res, "")
 	res = atxHeaderReg.ReplaceAllString(res, "$1")
